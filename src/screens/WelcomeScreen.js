@@ -12,7 +12,7 @@ import { AppTextBold } from "../components/ui/AppTextBold";
 
 import { THEME } from "../theme";
 
-export const WelcomeScreen = () => {
+export const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../image/welcome-bg.png")}
@@ -44,6 +44,9 @@ export const WelcomeScreen = () => {
             <AppButton
               backgroundColor={THEME.WHITE_COLOR}
               color={THEME.BLACK_COLOR}
+              onPress={() => {
+                navigation.navigate("LoginScreen");
+              }}
             >
               Войти
             </AppButton>
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 15,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    marginBottom: Dimensions.get("screen").width / 4.5,
+    marginBottom: Dimensions.get("screen").height / 8,
   },
   buttonContainer: {
     justifyContent: "center",

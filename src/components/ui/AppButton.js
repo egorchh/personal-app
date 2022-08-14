@@ -8,12 +8,12 @@ import {
 } from "react-native";
 import { AppTextSemiBold } from "./AppTextSemiBold";
 
-export const AppButton = ({ children, color, backgroundColor }) => {
+export const AppButton = ({ children, onPress, color, backgroundColor }) => {
   const Wrapper =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
   return (
-    <Wrapper activeOpacity={0.8}>
+    <Wrapper onPress={onPress} activeOpacity={0.8}>
       <View style={{ ...styles.button, backgroundColor }}>
         <AppTextSemiBold style={{ ...styles.text, color }}>
           {children}
