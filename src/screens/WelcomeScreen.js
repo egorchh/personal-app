@@ -65,11 +65,11 @@ export const WelcomeScreen = ({ navigation }) => {
   );
 };
 
-const { width, height } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    maxWidth: width * 0.82,
+    maxWidth: width * 0.85,
     height: height,
     alignItems: "flex-start",
     justifyContent: "space-between",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: THEME.LIGHT_GRAY_COLOR,
     lineHeight: 20,
-    maxWidth: "79%",
+    maxWidth: "92%",
   },
   avatar: {
     borderBottomLeftRadius: 15,
@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     maxWidth: "100%",
+    marginBottom: Dimensions.get("screen").height / 25,
   },
   descriptContainer: {
     width: "100%",

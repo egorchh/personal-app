@@ -6,19 +6,14 @@ import {
   TouchableNativeFeedback,
   Platform,
 } from "react-native";
-import { AppTextSemiBold } from "./AppTextSemiBold";
 
-export const AppButton = ({ children, onPress, color, backgroundColor }) => {
+export const AppLink = ({ children, onPress, backgroundColor }) => {
   const Wrapper =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
   return (
-    <Wrapper onPress={onPress} activeOpacity={0.8}>
-      <View style={{ ...styles.children, ...styles.button, backgroundColor }}>
-        <AppTextSemiBold style={{ ...styles.text, color }}>
-          {children}
-        </AppTextSemiBold>
-      </View>
+    <Wrapper style={styles.container} onPress={onPress} activeOpacity={0.8}>
+      <View style={{ ...styles.button, backgroundColor }}>{children}</View>
     </Wrapper>
   );
 };
@@ -28,10 +23,7 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 24,
     minWidth: "100%",
-    marginBottom: 18,
   },
   text: {
     fontSize: 14,
