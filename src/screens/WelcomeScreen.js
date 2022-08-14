@@ -1,6 +1,14 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View, Image } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  Image,
+  Dimensions,
+} from "react-native";
 import { AppButton } from "../components/ui/AppButton";
+import { AppTextRegular } from "../components/ui/AppTextRegular";
+import { AppTextBold } from "../components/ui/AppTextBold";
 
 import { THEME } from "../theme";
 
@@ -17,13 +25,13 @@ export const WelcomeScreen = () => {
             source={require("../image/user-pic.png")}
             style={{ ...styles.avatar, width: 54, height: 54 }}
           />
-          <Text style={styles.titleText}>
+          <AppTextBold style={styles.titleText}>
             Добро пожаловать в закрытый клуб Харчевникова
-          </Text>
-          <Text style={styles.text}>
+          </AppTextBold>
+          <AppTextRegular style={styles.text}>
             Я Саня, а это моё приложение, в котором я делюсь с тобой тем, чего
             никогда не будет в открытом доступе
-          </Text>
+          </AppTextRegular>
         </View>
         <View style={styles.bottomDescription}>
           <View style={styles.buttonContainer}>
@@ -41,8 +49,12 @@ export const WelcomeScreen = () => {
             </AppButton>
           </View>
           <View style={styles.descriptContainer}>
-            <Text style={styles.descriptText}>Харчевников Private App</Text>
-            <Text style={styles.descriptText}>conceptagency.ru</Text>
+            <AppTextRegular style={styles.descriptText}>
+              Харчевников Private App
+            </AppTextRegular>
+            <AppTextRegular style={styles.descriptText}>
+              conceptagency.ru
+            </AppTextRegular>
           </View>
         </View>
       </View>
@@ -50,17 +62,19 @@ export const WelcomeScreen = () => {
   );
 };
 
+const { width, height } = Dimensions.get("screen");
+
 const styles = StyleSheet.create({
   container: {
-    maxWidth: "85%",
-    height: "100%",
+    maxWidth: width * 0.82,
+    height: height,
     alignItems: "flex-start",
     justifyContent: "space-between",
   },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: width,
+    height: height,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -79,14 +93,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: THEME.LIGHT_GRAY_COLOR,
     lineHeight: 20,
-    maxWidth: "78%",
+    maxWidth: "79%",
   },
   avatar: {
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
-    marginBottom: 60,
+    marginBottom: Dimensions.get("screen").width / 4.5,
   },
   buttonContainer: {
     justifyContent: "center",

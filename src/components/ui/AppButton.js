@@ -5,9 +5,8 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
-  Text,
 } from "react-native";
-import { THEME } from "../../theme";
+import { AppTextSemiBold } from "./AppTextSemiBold";
 
 export const AppButton = ({ children, color, backgroundColor }) => {
   const Wrapper =
@@ -16,7 +15,9 @@ export const AppButton = ({ children, color, backgroundColor }) => {
   return (
     <Wrapper activeOpacity={0.8}>
       <View style={{ ...styles.button, backgroundColor }}>
-        <Text style={{ ...styles.text, color }}>{children}</Text>
+        <AppTextSemiBold style={{ ...styles.text, color }}>
+          {children}
+        </AppTextSemiBold>
       </View>
     </Wrapper>
   );
