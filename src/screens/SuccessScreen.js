@@ -29,6 +29,7 @@ export const SuccessScreen = ({ navigation }) => {
           <AppButton
             backgroundColor={THEME.GREEN_COLOR}
             color={THEME.WHITE_COLOR}
+            onPress={() => navigation.navigate("LoginScreen")}
           >
             Войти в клуб
           </AppButton>
