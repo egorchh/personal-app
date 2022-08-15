@@ -15,7 +15,7 @@ import { THEME } from "../theme";
 import { AppTextBold } from "../components/ui/AppTextBold";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 
-export const SubNotActiveScreen = ({ navigation }) => {
+export const UserNotFoundScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -30,17 +30,24 @@ export const SubNotActiveScreen = ({ navigation }) => {
       </AppLink>
       <ScrollView contentContainerStyle={styles.container}>
         <Image source={require("../image/error.png")} style={styles.image} />
-        <AppTextBold style={styles.title}>Подписка не активна</AppTextBold>
+        <AppTextBold style={styles.title}>Пользователь не найден</AppTextBold>
         <AppTextBold style={styles.description}>
-          Твоя подписка закончилась или отменена. Ты можешь продлить её по
-          кнопке ниже.
+          Похоже, у тебя ещё нет подписки в моём приложении. Ты можешь
+          приобрести её или попробовать войти ещё раз.
         </AppTextBold>
         <View style={styles.bottomStyle}>
           <AppButton
             backgroundColor={THEME.PURPLE_COLOR}
             color={THEME.WHITE_COLOR}
           >
-            Продлить подписку
+            Получить подписку
+          </AppButton>
+          <AppButton
+            backgroundColor={THEME.WHITE_COLOR}
+            color={THEME.BLACK_COLOR}
+            onPress={() => navigation.navigate("WelcomeScreen")}
+          >
+            На главную
           </AppButton>
         </View>
       </ScrollView>
@@ -83,12 +90,14 @@ const styles = StyleSheet.create({
     marginBottom: height / 18,
   },
   title: {
+    width: "80%",
     color: THEME.BLACK_COLOR,
     fontSize: 35,
     marginBottom: height / 40,
     textAlign: "center",
   },
   description: {
+    width: "90%",
     color: THEME.GRAY_COLOR,
     fontSize: 15,
     marginBottom: height / 20,

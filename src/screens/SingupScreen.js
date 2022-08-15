@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
+import { AppTextInput } from "../components/AppTextInput";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
@@ -34,8 +35,15 @@ export const SingupScreen = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate("SuccessScreen")}>
         <Text>success</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("ErrorScreen")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("SubNotActiveScreen")}
+      >
         <Text>error</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("UserNotFoundScreen")}
+      >
+        <Text>notFound</Text>
       </TouchableOpacity>
       <ScrollView
         contentContainerStyle={styles.container}
@@ -49,26 +57,10 @@ export const SingupScreen = ({ navigation }) => {
         <AppTextSemiBold style={styles.description}>
           Оформи подписку и получи доступ к самой эксклюзивной информации
         </AppTextSemiBold>
-        <TextInput
-          style={styles.input}
-          value={{}}
-          placeholder="Ник в telegram"
-        />
-        <TextInput style={styles.input} value={{}} placeholder="Эл. почта" />
-        <TextInput style={styles.input} value={{}} placeholder="Пароль" />
-        <TextInput
-          style={styles.input}
-          value={{}}
-          placeholder="Повтори пароль"
-        />
-        <View style={styles.questionsWrapper}>
-          <AppTextSemiBold style={styles.questions}>
-            Ещё нет доступа?
-          </AppTextSemiBold>
-          <AppTextSemiBold style={styles.questions}>
-            Забыл пароль?
-          </AppTextSemiBold>
-        </View>
+        <AppTextInput value={{}} placeholder={"Ник в telegram"} />
+        <AppTextInput value={{}} placeholder={"Эл. почта"} />
+        <AppTextInput value={{}} placeholder={"Пароль"} />
+        <AppTextInput value={{}} placeholder={"Повтори пароль"} />
         <View style={styles.bottomStyle}>
           <AppButton
             backgroundColor={THEME.PURPLE_COLOR}
@@ -103,7 +95,7 @@ const styles = StyleSheet.create({
     left: 23,
     flexDirection: "row",
     alignItems: "center",
-    zIndex: 1,
+    // zIndex: 1,
   },
   navText: {
     color: THEME.GRAY_COLOR,
@@ -129,34 +121,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: height / 20,
   },
-  input: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    backgroundColor: THEME.WHITE_COLOR,
-    borderRadius: 10,
-    width: "100%",
-    fontFamily: "Gilroy-SemiBold",
-    color: THEME.LIGHT_GRAY_COLOR,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.03,
-    shadowRadius: 10.32,
-    elevation: 0,
-    marginBottom: height / 35,
-  },
-  questionsWrapper: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: height / 70,
-    marginBottom: "15%",
-  },
-  questions: {
-    color: THEME.GRAY_COLOR,
-  },
   descriptContainer: {
     width: "100%",
     flexDirection: "row",
@@ -168,5 +132,6 @@ const styles = StyleSheet.create({
   },
   bottomStyle: {
     width: "100%",
+    marginTop: height / 35,
   },
 });

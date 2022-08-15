@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
+import { AppTextInput } from "../components/AppTextInput";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
@@ -30,11 +31,10 @@ export const PasswordScreen = ({ navigation }) => {
       </AppLink>
       <ScrollView contentContainerStyle={styles.container}>
         <AppTextBold style={styles.title}>Восстановить пароль</AppTextBold>
-        <TextInput style={styles.input} value={{}} placeholder="Новый пароль" />
-        <TextInput
+        <AppTextInput
           style={styles.input}
           value={{}}
-          placeholder="Повтори пароль"
+          placeholder={"Эл. почта"}
         />
         <View style={styles.bottomStyle}>
           <AppButton
@@ -79,28 +79,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   title: {
+    width: "90%",
     textAlign: "center",
     color: THEME.BLACK_COLOR,
     fontSize: 35,
     marginBottom: height / 15,
-  },
-  input: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    backgroundColor: THEME.WHITE_COLOR,
-    borderRadius: 10,
-    width: "100%",
-    fontFamily: "Gilroy-SemiBold",
-    color: THEME.LIGHT_GRAY_COLOR,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.03,
-    shadowRadius: 10.32,
-    elevation: 0,
-    marginBottom: height / 35,
   },
   bottomStyle: {
     width: "100%",

@@ -14,7 +14,7 @@ export const AppLink = ({ children, onPress, style }) => {
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
   return (
-    <Wrapper onPress={onPress} activeOpacity={0.8}>
+    <Wrapper style={{ zIndex: 1 }} onPress={onPress} activeOpacity={0.8}>
       <View style={{ ...style, ...styles.text }}>{children}</View>
     </Wrapper>
   );

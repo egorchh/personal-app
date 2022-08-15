@@ -5,12 +5,11 @@ import {
   ImageBackground,
   Dimensions,
   Image,
-  TextInput,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
+import { AppTextInput } from "../components/AppTextInput";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
@@ -24,8 +23,8 @@ export const LoginScreen = ({ navigation }) => {
       style={styles.background}
     >
       <AppLink
-        style={styles.navLink}
         onPress={() => navigation.navigate("WelcomeScreen")}
+        style={styles.navLink}
       >
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
@@ -39,12 +38,16 @@ export const LoginScreen = ({ navigation }) => {
         <AppTextSemiBold style={styles.description}>
           Используя ник в telegram и пароль
         </AppTextSemiBold>
-        <TextInput
+        <AppTextInput
           style={styles.input}
           value={{}}
-          placeholder="Ник в telegram"
+          placeholder={"Ник в telegram"}
         />
-        <TextInput style={styles.input} value={{}} placeholder="••••••••••••" />
+        <AppTextInput
+          style={styles.input}
+          value={{}}
+          placeholder={"••••••••••••"}
+        />
         <View style={styles.questionsWrapper}>
           <AppLink onPress={() => navigation.navigate("SingupScreen")}>
             <AppTextSemiBold style={styles.questions}>
@@ -112,24 +115,6 @@ const styles = StyleSheet.create({
   },
   description: {
     marginBottom: height / 20,
-  },
-  input: {
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    backgroundColor: THEME.WHITE_COLOR,
-    borderRadius: 10,
-    width: "100%",
-    fontFamily: "Gilroy-SemiBold",
-    color: THEME.LIGHT_GRAY_COLOR,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.03,
-    shadowRadius: 10.32,
-    elevation: 0,
-    marginBottom: height / 35,
   },
   questionsWrapper: {
     width: "100%",
