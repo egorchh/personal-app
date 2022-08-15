@@ -5,6 +5,7 @@ import { WelcomeScreen } from "./screens/WelcomeScreen";
 import { SingupScreen } from "./screens/SingupScreen";
 import { SuccessScreen } from "./screens/SuccessScreen";
 import { SubNotActiveScreen } from "./screens/SubNotActiveScreen";
+import { PasswordScreen } from "./screens/PasswordScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -36,8 +37,13 @@ export default function Navigation() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="ErrorScreen"
+          name="SubNotActiveScreen"
           component={SubNotActiveScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PasswordScreen"
+          component={PasswordScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

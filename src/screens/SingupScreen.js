@@ -11,6 +11,7 @@ import {
   Text,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
+import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
@@ -23,13 +24,13 @@ export const SingupScreen = ({ navigation }) => {
       source={require("../image/bg-white.png")}
       style={styles.background}
     >
-      <TouchableOpacity
+      <AppLink
         style={styles.navLink}
         onPress={() => navigation.navigate("WelcomeScreen")}
       >
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
-      </TouchableOpacity>
+      </AppLink>
       <TouchableOpacity onPress={() => navigation.navigate("SuccessScreen")}>
         <Text>success</Text>
       </TouchableOpacity>
@@ -95,7 +96,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: width / 6,
     paddingHorizontal: width * 0.07,
-    // paddingBottom: height / 20,
   },
   navLink: {
     width: "35%",

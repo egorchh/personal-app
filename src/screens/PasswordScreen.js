@@ -4,10 +4,8 @@ import {
   View,
   ImageBackground,
   Dimensions,
-  Image,
   TextInput,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
@@ -17,7 +15,7 @@ import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
 
-export const LoginScreen = ({ navigation }) => {
+export const PasswordScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -31,38 +29,19 @@ export const LoginScreen = ({ navigation }) => {
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
       </AppLink>
       <ScrollView contentContainerStyle={styles.container}>
-        <Image
-          source={require("../image/user-pic.png")}
-          style={styles.avatar}
-        />
-        <AppTextBold style={styles.title}>Войти</AppTextBold>
-        <AppTextSemiBold style={styles.description}>
-          Используя ник в telegram и пароль
-        </AppTextSemiBold>
+        <AppTextBold style={styles.title}>Восстановить пароль</AppTextBold>
+        <TextInput style={styles.input} value={{}} placeholder="Новый пароль" />
         <TextInput
           style={styles.input}
           value={{}}
-          placeholder="Ник в telegram"
+          placeholder="Повтори пароль"
         />
-        <TextInput style={styles.input} value={{}} placeholder="••••••••••••" />
-        <View style={styles.questionsWrapper}>
-          <AppLink onPress={() => navigation.navigate("SingupScreen")}>
-            <AppTextSemiBold style={styles.questions}>
-              Ещё нет доступа?
-            </AppTextSemiBold>
-          </AppLink>
-          <AppLink onPress={() => navigation.navigate("PasswordScreen")}>
-            <AppTextSemiBold style={styles.questions}>
-              Забыл пароль?
-            </AppTextSemiBold>
-          </AppLink>
-        </View>
         <View style={styles.bottomStyle}>
           <AppButton
             backgroundColor={THEME.PURPLE_COLOR}
             color={THEME.WHITE_COLOR}
           >
-            Войти
+            Восстановить
           </AppButton>
         </View>
       </ScrollView>
@@ -82,6 +61,7 @@ const styles = StyleSheet.create({
     maxWidth: width,
     height: height,
     alignItems: "center",
+    justifyContent: "center",
     paddingTop: width / 6,
     paddingHorizontal: width * 0.07,
   },
@@ -98,20 +78,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     zIndex: 1,
   },
-  avatar: {
-    width: 124,
-    height: 124,
-    borderRadius: 60,
-    marginTop: height / 12,
-    marginBottom: height / 18,
-  },
   title: {
+    textAlign: "center",
     color: THEME.BLACK_COLOR,
     fontSize: 35,
-    marginBottom: height / 40,
-  },
-  description: {
-    marginBottom: height / 20,
+    marginBottom: height / 15,
   },
   input: {
     paddingHorizontal: 20,
@@ -131,26 +102,8 @@ const styles = StyleSheet.create({
     elevation: 0,
     marginBottom: height / 35,
   },
-  questionsWrapper: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: height / 70,
-    marginBottom: "15%",
-  },
-  questions: {
-    color: THEME.GRAY_COLOR,
-  },
-  descriptContainer: {
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  descriptText: {
-    fontSize: 10,
-    color: THEME.GRAY_COLOR,
-  },
   bottomStyle: {
     width: "100%",
+    marginTop: height / 35,
   },
 });
