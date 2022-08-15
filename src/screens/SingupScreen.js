@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  Text,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { Entypo } from "@expo/vector-icons";
@@ -16,7 +17,7 @@ import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
 
-export const LoginScreen = ({ navigation }) => {
+export const SingupScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -29,21 +30,36 @@ export const LoginScreen = ({ navigation }) => {
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
       </TouchableOpacity>
-      <ScrollView contentContainerStyle={styles.container}>
+      <TouchableOpacity onPress={() => navigation.navigate("SuccessScreen")}>
+        <Text>success</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("ErrorScreen")}>
+        <Text>error</Text>
+      </TouchableOpacity>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        contentInset={{ top: 0, bottom: 100 }}
+      >
         <Image
           source={require("../image/user-pic.png")}
           style={styles.avatar}
         />
-        <AppTextBold style={styles.title}>Войти</AppTextBold>
+        <AppTextBold style={styles.title}>Получить доступ</AppTextBold>
         <AppTextSemiBold style={styles.description}>
-          Используя ник в telegram и пароль
+          Оформи подписку и получи доступ к самой эксклюзивной информации
         </AppTextSemiBold>
         <TextInput
           style={styles.input}
           value={{}}
           placeholder="Ник в telegram"
         />
-        <TextInput style={styles.input} value={{}} placeholder="••••••••••••" />
+        <TextInput style={styles.input} value={{}} placeholder="Эл. почта" />
+        <TextInput style={styles.input} value={{}} placeholder="Пароль" />
+        <TextInput
+          style={styles.input}
+          value={{}}
+          placeholder="Повтори пароль"
+        />
         <View style={styles.questionsWrapper}>
           <AppTextSemiBold style={styles.questions}>
             Ещё нет доступа?
@@ -57,7 +73,7 @@ export const LoginScreen = ({ navigation }) => {
             backgroundColor={THEME.PURPLE_COLOR}
             color={THEME.WHITE_COLOR}
           >
-            Войти
+            Купить доступ
           </AppButton>
         </View>
       </ScrollView>
@@ -79,11 +95,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: width / 6,
     paddingHorizontal: width * 0.07,
-  },
-  navText: {
-    color: THEME.GRAY_COLOR,
-    fontSize: 15,
-    marginLeft: 7,
+    // paddingBottom: height / 20,
   },
   navLink: {
     width: "35%",
@@ -92,6 +104,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     zIndex: 1,
+  },
+  navText: {
+    color: THEME.GRAY_COLOR,
+    fontSize: 15,
+    marginLeft: 7,
   },
   avatar: {
     width: 124,
@@ -108,6 +125,8 @@ const styles = StyleSheet.create({
   description: {
     color: THEME.BLACK_COLOR,
     fontSize: 15,
+    lineHeight: 25,
+    textAlign: "center",
     marginBottom: height / 20,
   },
   input: {

@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppTextRegular } from "../components/ui/AppTextRegular";
@@ -18,7 +19,7 @@ export const WelcomeScreen = ({ navigation }) => {
       source={require("../image/welcome-bg.png")}
       style={styles.image}
     >
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.userInfo}>
           <Image
             resizeMode="cover"
@@ -38,6 +39,9 @@ export const WelcomeScreen = ({ navigation }) => {
             <AppButton
               backgroundColor={THEME.PURPLE_COLOR}
               color={THEME.WHITE_COLOR}
+              onPress={() => {
+                navigation.navigate("SingupScreen");
+              }}
             >
               Получить доступ
             </AppButton>
@@ -60,7 +64,7 @@ export const WelcomeScreen = ({ navigation }) => {
             </AppTextRegular>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </ImageBackground>
   );
 };
@@ -68,14 +72,13 @@ export const WelcomeScreen = ({ navigation }) => {
 const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     maxWidth: width * 0.85,
     height: height,
     alignItems: "flex-start",
     justifyContent: "space-between",
   },
   image: {
-    flex: 1,
     width: width,
     height: height,
     justifyContent: "center",
@@ -109,7 +112,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     maxWidth: "100%",
-    marginBottom: Dimensions.get("screen").height / 25,
+    marginBottom: Dimensions.get("screen").height / 70,
   },
   descriptContainer: {
     width: "100%",
@@ -122,6 +125,6 @@ const styles = StyleSheet.create({
     color: THEME.LIGHT_GRAY_COLOR,
   },
   bottomDescription: {
-    marginBottom: 30,
+    marginBottom: height / 25,
   },
 });

@@ -2,6 +2,9 @@ import React from "react";
 
 import { LoginScreen } from "./screens/LoginScreen";
 import { WelcomeScreen } from "./screens/WelcomeScreen";
+import { SingupScreen } from "./screens/SingupScreen";
+import { SuccessScreen } from "./screens/SuccessScreen";
+import { SubNotActiveScreen } from "./screens/SubNotActiveScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -20,6 +23,21 @@ export default function Navigation() {
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SingupScreen"
+          component={SingupScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SuccessScreen"
+          component={SuccessScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ErrorScreen"
+          component={SubNotActiveScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
