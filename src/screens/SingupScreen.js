@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
-import { AppTextInput } from "../components/AppTextInput";
+import { AppTextInput } from "../components/ui/AppTextInput";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";

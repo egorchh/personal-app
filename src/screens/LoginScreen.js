@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
-import { AppTextInput } from "../components/AppTextInput";
+import { AppTextInput } from "../components/ui/AppTextInput";
 import { Entypo } from "@expo/vector-icons";
 
 import { THEME } from "../theme";
@@ -38,16 +38,8 @@ export const LoginScreen = ({ navigation }) => {
         <AppTextSemiBold style={styles.description}>
           Используя ник в telegram и пароль
         </AppTextSemiBold>
-        <AppTextInput
-          style={styles.input}
-          value={{}}
-          placeholder={"Ник в telegram"}
-        />
-        <AppTextInput
-          style={styles.input}
-          value={{}}
-          placeholder={"••••••••••••"}
-        />
+        <AppTextInput value={{}} placeholder={"Ник в telegram"} />
+        <AppTextInput value={{}} placeholder={"••••••••••••"} />
         <View style={styles.questionsWrapper}>
           <AppLink onPress={() => navigation.navigate("SingupScreen")}>
             <AppTextSemiBold style={styles.questions}>
@@ -78,7 +70,6 @@ const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   background: {
-    flex: 1,
     width: "100%",
     height: "100%",
   },

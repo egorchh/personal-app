@@ -8,6 +8,7 @@ import { SubNotActiveScreen } from "./screens/SubNotActiveScreen";
 import { PasswordScreen } from "./screens/PasswordScreen";
 import { UserNotFoundScreen } from "./screens/UserNotFoundScreen";
 import { ContentScreen } from "./screens/ContentScreen";
+import { SearchScreen } from "./screens/SearchScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -17,7 +18,7 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerTintColor={"red"}>
         <Stack.Screen
           name="WelcomeScreen"
           component={WelcomeScreen}
@@ -56,6 +57,11 @@ export default function Navigation() {
         <Stack.Screen
           name="ContentScreen"
           component={ContentScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SearchScreen"
+          component={SearchScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

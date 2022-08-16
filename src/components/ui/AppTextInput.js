@@ -1,6 +1,6 @@
 import React from "react";
 import { TextInput, StyleSheet, Dimensions } from "react-native";
-import { THEME } from "../theme";
+import { THEME } from "../../theme";
 
 export const AppTextInput = ({ style, placeholder, value }) => {
   return (
