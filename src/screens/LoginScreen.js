@@ -64,6 +64,7 @@ export const LoginScreen = ({ navigation }) => {
           <AppButton
             backgroundColor={THEME.PURPLE_COLOR}
             color={THEME.WHITE_COLOR}
+            onPress={() => navigation.navigate("ContentScreen")}
           >
             Войти
           </AppButton>

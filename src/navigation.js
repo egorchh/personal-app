@@ -7,6 +7,7 @@ import { SuccessScreen } from "./screens/SuccessScreen";
 import { SubNotActiveScreen } from "./screens/SubNotActiveScreen";
 import { PasswordScreen } from "./screens/PasswordScreen";
 import { UserNotFoundScreen } from "./screens/UserNotFoundScreen";
+import { ContentScreen } from "./screens/ContentScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -50,6 +51,11 @@ export default function Navigation() {
         <Stack.Screen
           name="UserNotFoundScreen"
           component={UserNotFoundScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ContentScreen"
+          component={ContentScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
