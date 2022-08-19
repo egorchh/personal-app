@@ -9,6 +9,7 @@ import { PasswordScreen } from "./screens/PasswordScreen";
 import { UserNotFoundScreen } from "./screens/UserNotFoundScreen";
 import { ContentScreen } from "./screens/ContentScreen";
 import { SearchScreen } from "./screens/SearchScreen";
+import { SubscriptionScreen } from "./screens/SubscriptionScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -64,7 +65,13 @@ export default function Navigation() {
           component={SearchScreen}
           options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="SubscriptionScreen"
+          component={SubscriptionScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
+
     </NavigationContainer>
   );
 }

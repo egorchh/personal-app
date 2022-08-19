@@ -1,7 +1,6 @@
 import { React } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   Dimensions,
@@ -11,9 +10,14 @@ import {
 import { THEME } from "../theme";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
-export const BottomNavbar = ({ navigation }) => {
+import { useNavigation } from "@react-navigation/native";
+
+export const BottomNavbar = ({}) => {
+
   const Wrapper =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
+
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -44,7 +48,9 @@ export const BottomNavbar = ({ navigation }) => {
           <AppTextSemiBold style={styles.text}>Уведомления</AppTextSemiBold>
         </View>
       </Wrapper>
-      <Wrapper>
+      <Wrapper
+      onPress={() => navigation.navigate("SubscriptionScreen")}
+      >
         <View style={styles.wrapper}>
           <Image
             style={{ ...styles.icon, borderRadius: 16 }}
