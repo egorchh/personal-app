@@ -1,11 +1,5 @@
 import React, { useState, useContext } from "react";
-import {
-  StyleSheet,
-  ImageBackground,
-  Dimensions,
-  View,
-  Button,
-} from "react-native";
+import { StyleSheet, ImageBackground, Dimensions, View } from "react-native";
 import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -28,7 +22,7 @@ export const SearchScreen = ({ navigation }) => {
     }
 
     return data.filter((item) => {
-      return item.title.indexOf(value) > -1;
+      return item.title.toLowerCase().indexOf(value.toLowerCase()) > -1;
     });
   };
 
@@ -52,12 +46,13 @@ export const SearchScreen = ({ navigation }) => {
             placeholder={"Поиск"}
             backgroundColor={THEME.PURPLE_COLOR}
             onChangeText={(text) => setValue(text)}
+            onPress={() => inputHandler(value, data)}
           >
             <Ionicons name="search" size={25} color={THEME.WHITE_COLOR} />
           </AppSearch>
         </View>
         <AppTextBold style={styles.title}>Результаты</AppTextBold>
-        <ContentList data={inputHandler(value, data)} />
+        <ContentList data={filteredData ? filteredData : data} />
       </View>
     </ImageBackground>
   );
