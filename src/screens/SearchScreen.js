@@ -46,13 +46,12 @@ export const SearchScreen = ({ navigation }) => {
             placeholder={"Поиск"}
             backgroundColor={THEME.PURPLE_COLOR}
             onChangeText={(text) => setValue(text)}
-            onPress={() => inputHandler(value, data)}
           >
             <Ionicons name="search" size={25} color={THEME.WHITE_COLOR} />
           </AppSearch>
         </View>
         <AppTextBold style={styles.title}>Результаты</AppTextBold>
-        <ContentList data={filteredData ? filteredData : data} />
+        <ContentList data={inputHandler(value, data)} />
       </View>
     </ImageBackground>
   );

@@ -20,9 +20,6 @@ export const AppSearch = ({
   onChangeText,
   value,
 }) => {
-  const Wrapper =
-    Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
-
   return (
     <View style={styles.container}>
       <TextInput
@@ -31,13 +28,6 @@ export const AppSearch = ({
         value={value}
         onChangeText={onChangeText}
       />
-      <Wrapper onPress={() => console.log(value)}>
-        <View style={{ ...styles.buttonContainer, backgroundColor }}>
-          <AppTextSemiBold style={{ ...styles.text, color }}>
-            {children}
-          </AppTextSemiBold>
-        </View>
-      </Wrapper>
     </View>
   );
 };
@@ -45,17 +35,7 @@ export const AppSearch = ({
 const { height, width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    width: "20%",
-    height: 60,
-    backgroundColor: THEME.PURPLE_COLOR,
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottomRightRadius: 10,
-    borderTopRightRadius: 10,
-  },
   container: {
-    // width: "100%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -67,7 +47,9 @@ const styles = StyleSheet.create({
     backgroundColor: THEME.WHITE_COLOR,
     borderBottomLeftRadius: 10,
     borderTopLeftRadius: 10,
-    width: "80%",
+    borderBottomRightRadius: 10,
+    borderTopRightRadius: 10,
+    width: "100%",
     height: 60,
     fontFamily: "Gilroy-SemiBold",
     color: THEME.LIGHT_GRAY_COLOR,
@@ -79,6 +61,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.03,
     shadowRadius: 10.32,
     elevation: 0,
-    // marginBottom: height / 35,
   },
 });
