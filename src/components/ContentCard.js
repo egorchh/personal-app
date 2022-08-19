@@ -5,7 +5,7 @@ import { THEME } from "../theme";
 import { AppTextBold } from "./ui/AppTextBold";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
-export const ContentCard = ({ navigation }) => {
+export const ContentCard = ({ navigation, title, date }) => {
   return (
     <View style={styles.contentContainer}>
       <Image
@@ -13,12 +13,8 @@ export const ContentCard = ({ navigation }) => {
         source={require("../image/welcome-bg.png")}
       />
       <View style={styles.desctiptionContainer}>
-        <AppTextBold style={styles.descriptionTitle}>
-          Чем я пользуюсь вместо VPN
-        </AppTextBold>
-        <AppTextSemiBold style={styles.descriptionText}>
-          30 июля 2022
-        </AppTextSemiBold>
+        <AppTextBold style={styles.descriptionTitle}>{title}</AppTextBold>
+        <AppTextSemiBold style={styles.descriptionText}>{date}</AppTextSemiBold>
       </View>
     </View>
   );

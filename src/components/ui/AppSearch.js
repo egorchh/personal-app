@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TextInput,
   StyleSheet,
@@ -17,6 +17,7 @@ export const AppSearch = ({
   placeholder,
   color,
   backgroundColor,
+  onChangeText,
   value,
 }) => {
   const Wrapper =
@@ -28,8 +29,9 @@ export const AppSearch = ({
         placeholder={placeholder}
         style={{ ...styles.input }}
         value={value}
+        onChangeText={onChangeText}
       />
-      <Wrapper>
+      <Wrapper onPress={() => console.log(value)}>
         <View style={{ ...styles.buttonContainer, backgroundColor }}>
           <AppTextSemiBold style={{ ...styles.text, color }}>
             {children}

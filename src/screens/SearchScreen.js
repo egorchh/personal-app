@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   ImageBackground,
   Dimensions,
-  ScrollView,
   View,
+  Button,
 } from "react-native";
-import { ContentCard } from "../components/ContentCard";
 import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,10 +13,25 @@ import { Ionicons } from "@expo/vector-icons";
 import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
-import { BottomNavbar } from "../components/BottomNavbar";
 import { AppSearch } from "../components/ui/AppSearch";
+import { ContentList } from "../components/СontentList";
+import { DataContext } from "../context/data/DataContext";
 
 export const SearchScreen = ({ navigation }) => {
+  const [value, setValue] = useState("");
+
+  const data = useContext(DataContext);
+
+  const inputHandler = (value, data) => {
+    if (value.length === 0) {
+      return data;
+    }
+
+    return data.filter((item) => {
+      return item.title.indexOf(value) > -1;
+    });
+  };
+
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -34,24 +48,16 @@ export const SearchScreen = ({ navigation }) => {
         <View>
           <AppTextBold style={styles.title}>Поиск</AppTextBold>
           <AppSearch
-            value={{}}
-            placeholder={"Ник в telegram"}
+            value={value}
+            placeholder={"Поиск"}
             backgroundColor={THEME.PURPLE_COLOR}
+            onChangeText={(text) => setValue(text)}
           >
             <Ionicons name="search" size={25} color={THEME.WHITE_COLOR} />
           </AppSearch>
         </View>
         <AppTextBold style={styles.title}>Результаты</AppTextBold>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          contentInset={{ bottom: 100 }}
-        >
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-        </ScrollView>
+        <ContentList data={inputHandler(value, data)} />
       </View>
     </ImageBackground>
   );

@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   ImageBackground,
   Dimensions,
-  ScrollView,
   Image,
   View,
 } from "react-native";
-import { ContentCard } from "../components/ContentCard";
 import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
 
@@ -15,8 +13,11 @@ import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
 import { BottomNavbar } from "../components/BottomNavbar";
+import { ContentList } from "../components/СontentList";
+import { DataContext } from "../context/data/DataContext";
 
 export const ContentScreen = ({ navigation }) => {
+  const data = useContext(DataContext);
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -37,16 +38,7 @@ export const ContentScreen = ({ navigation }) => {
       </AppLink>
       <View style={styles.container}>
         <AppTextBold style={styles.title}>Эксклюзивный контент</AppTextBold>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-          contentInset={{ bottom: 100 }}
-        >
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-          <ContentCard />
-        </ScrollView>
+        <ContentList data={data} />
       </View>
       <BottomNavbar />
     </ImageBackground>
@@ -63,12 +55,6 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     paddingTop: height / 10,
-  },
-  scrollContainer: {
-    maxWidth: "100%",
-    height: 1500,
-    alignItems: "center",
-    paddingHorizontal: width * 0.07,
   },
   navLink: {
     width: "35%",
