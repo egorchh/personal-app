@@ -1,25 +1,8 @@
 import React, { useState } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  Dimensions,
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { TextInput, StyleSheet, Dimensions, View } from "react-native";
 import { THEME } from "../../theme";
 
-import { AppTextSemiBold } from "./AppTextSemiBold";
-
-export const AppSearch = ({
-  children,
-  placeholder,
-  color,
-  backgroundColor,
-  onChangeText,
-  value,
-}) => {
+export const AppSearch = ({ placeholder, onChangeText, value }) => {
   return (
     <View style={styles.container}>
       <TextInput

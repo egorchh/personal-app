@@ -39,6 +39,7 @@ export const UserNotFoundScreen = ({ navigation }) => {
           <AppButton
             backgroundColor={THEME.PURPLE_COLOR}
             color={THEME.WHITE_COLOR}
+            onPress={() => navigation.navigate("SingupScreen")}
           >
             Получить подписку
           </AppButton>

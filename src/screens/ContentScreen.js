@@ -30,9 +30,12 @@ export const ContentScreen = ({ navigation }) => {
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>Назад</AppTextSemiBold>
       </AppLink>
-      <AppLink onPress={() => navigation.navigate("SearchScreen")}>
+      <AppLink
+        style={styles.search}
+        onPress={() => navigation.navigate("SearchScreen")}
+      >
         <Image
-          style={styles.searchIcon}
+          style={{ width: 18, height: 18 }}
           source={require("../image/icon-search.png")}
         />
       </AppLink>
@@ -74,10 +77,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginBottom: height / 20,
   },
-  searchIcon: {
-    width: 18,
-    height: 18,
-    top: 43,
+  search: {
+    position: "absolute",
+    top: 60,
     left: width * 0.88,
   },
 });

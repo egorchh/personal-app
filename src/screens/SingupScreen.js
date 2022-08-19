@@ -5,10 +5,7 @@ import {
   ImageBackground,
   Dimensions,
   Image,
-  TextInput,
   ScrollView,
-  TouchableOpacity,
-  Text,
 } from "react-native";
 import { AppButton } from "../components/ui/AppButton";
 import { AppLink } from "../components/ui/AppLink";
@@ -32,19 +29,6 @@ export const SingupScreen = ({ navigation }) => {
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
       </AppLink>
-      <TouchableOpacity onPress={() => navigation.navigate("SuccessScreen")}>
-        <Text>success</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("SubNotActiveScreen")}
-      >
-        <Text>error</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("UserNotFoundScreen")}
-      >
-        <Text>notFound</Text>
-      </TouchableOpacity>
       <ScrollView
         contentContainerStyle={styles.container}
         contentInset={{ top: 0, bottom: 100 }}
@@ -95,7 +79,6 @@ const styles = StyleSheet.create({
     left: 23,
     flexDirection: "row",
     alignItems: "center",
-    // zIndex: 1,
   },
   navText: {
     color: THEME.GRAY_COLOR,
