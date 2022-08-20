@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { DataContext } from "./src/context/data/DataContext";
+
 import Navigation from "./src/navigation";
 
 import * as Font from "expo-font";
@@ -18,6 +19,8 @@ export default function App() {
     { id: 4, title: "Выучить JavaScript", date: "11 августа 2020" },
     { id: 5, title: "Выучить TypeScript за 3 минуты", date: "11 августа 2020" },
   ]);
+
+  // const [resImage, setResImage] = useState("");
 
   useEffect(() => {
     async function prepare() {

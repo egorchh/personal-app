@@ -19,17 +19,26 @@ import { AppButton } from "../components/ui/AppButton";
 import { AppTextInput } from "../components/ui/AppTextInput";
 import { BottomNavbar } from "../components/BottomNavbar";
 
+import { AVATARS } from "../avatars";
+
 export const SubscriptionScreen = ({ navigation }) => {
   const [imageURL, setImageURL] = useState("");
-  const [inputValue, setInputValue] = useState("");
+  const [resImage, setResImage] = useState("");
 
-  const changeImage = (url) => {
-    setInputValue(url);
+  const changeImage = (uri) => {
+    setResImage(uri);
   };
 
-  let uri = inputValue
-    ? inputValue
-    : "https://media.istockphoto.com/photos/portrait-of-handsome-latino-african-man-picture-id1007763808?k=20&m=1007763808&s=612x612&w=0&h=q4qlV-99EK1VHePL1-Xon4gpdpK7kz3631XK4Hgr1ls=";
+  const avatarsArray = AVATARS.map(
+    (item) => Image.resolveAssetSource(item).uri
+  );
+
+  function arrayRandElement(arr) {
+    const rand = Math.floor(Math.random() * arr.length);
+    return arr[rand];
+  }
+
+  let uri = resImage ? resImage : arrayRandElement(avatarsArray);
 
   return (
     <ImageBackground source={require("../image/bg-white.png")}>
@@ -45,16 +54,13 @@ export const SubscriptionScreen = ({ navigation }) => {
           <ScrollView contentContainerStyle={styles.scrollContainer}>
             <Image
               source={{ uri: uri }}
-              style={
-                (styles.avatar,
-                {
-                  width: 100,
-                  height: 100,
-                  borderRadius: 50,
-                  marginTop: height / 20,
-                  marginBottom: height / 25,
-                })
-              }
+              style={{
+                width: 100,
+                height: 100,
+                borderRadius: 50,
+                marginTop: height / 20,
+                marginBottom: height / 25,
+              }}
             />
             <AppTextBold style={styles.title}>Моя подписка</AppTextBold>
             <AppTextRegular style={styles.text}>
@@ -101,7 +107,7 @@ export const SubscriptionScreen = ({ navigation }) => {
         </KeyboardAvoidingView>
       </View>
       <View style={styles.footer}>
-        <BottomNavbar />
+        <BottomNavbar avatarUri={uri} />
       </View>
     </ImageBackground>
   );
@@ -134,13 +140,6 @@ const styles = StyleSheet.create({
     color: THEME.GRAY_COLOR,
     fontSize: 15,
     marginLeft: 7,
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginTop: height / 20,
-    marginBottom: height / 25,
   },
   title: {
     textAlign: "center",

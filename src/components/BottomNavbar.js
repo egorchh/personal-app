@@ -12,7 +12,7 @@ import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
 import { useNavigation } from "@react-navigation/native";
 
-export const BottomNavbar = ({}) => {
+export const BottomNavbar = ({ avatarUri }) => {
   const Wrapper =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
@@ -50,8 +50,8 @@ export const BottomNavbar = ({}) => {
       <Wrapper onPress={() => navigation.navigate("SubscriptionScreen")}>
         <View style={styles.wrapper}>
           <Image
-            style={{ ...styles.icon, borderRadius: 16 }}
-            source={require("../image/user-pic.png")}
+            style={{ width: 32, height: 32, borderRadius: 16 }}
+            source={{ uri: avatarUri }}
           />
           <AppTextSemiBold style={styles.text}>Подписка</AppTextSemiBold>
         </View>
