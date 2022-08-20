@@ -1,11 +1,13 @@
 import React from "react";
-import { 
-    Dimensions,
-    ImageBackground,
-    StyleSheet,
-    Image,
-    ScrollView,
-    View
+import {
+  Dimensions,
+  ImageBackground,
+  StyleSheet,
+  Image,
+  ScrollView,
+  View,
+  KeyboardAvoidingView,
+  SafeAreaView,
 } from "react-native";
 import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
@@ -18,43 +20,37 @@ import { AppButton } from "../components/ui/AppButton";
 import { AppTextInput } from "../components/ui/AppTextInput";
 import { BottomNavbar } from "../components/BottomNavbar";
 
-
-
 export const SubscriptionScreen = ({ navigation }) => {
-
   return (
-    <ImageBackground
-      source={require("../image/bg-white.png")}
-      style={styles.background}
-      >
+    <ImageBackground source={require("../image/bg-white.png")}>
       <AppLink
-          style={styles.navLink}
-          onPress={() => navigation.navigate("ContentScreen")}
-        >
-          <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
-          <AppTextSemiBold style={styles.navText}>Назад</AppTextSemiBold>
-
+        style={styles.navLink}
+        onPress={() => navigation.navigate("ContentScreen")}
+      >
+        <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
+        <AppTextSemiBold style={styles.navText}>Назад</AppTextSemiBold>
       </AppLink>
       <View style={styles.container}>
-        <ScrollView
-          contentContainerStyle={styles.scrollContainer}
-        >
-          <Image
-            source={require("../image/user-pic.png")}
-            style={styles.avatar}
-          />
-          <AppTextBold style={styles.title}>Моя подписка</AppTextBold>
-          <AppTextRegular style={styles.text}>conceptagencyrylit</AppTextRegular>
-          <View style={styles.buttonStyle}>
-            <AppButton
-              backgroundColor={THEME.GREEN_COLOR}
-              color={THEME.WHITE_COLOR}
-              onPress={() => navigation.navigate("LoginScreen")}
-            >
-              Активна до 01.01.2022
-            </AppButton>
-          </View>
-          <View style={styles.buttonStyle}>
+        <KeyboardAvoidingView behavior="padding">
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <Image
+              source={require("../image/user-pic.png")}
+              style={styles.avatar}
+            />
+            <AppTextBold style={styles.title}>Моя подписка</AppTextBold>
+            <AppTextRegular style={styles.text}>
+              conceptagencyrylit
+            </AppTextRegular>
+            <View style={styles.buttonStyle}>
+              <AppButton
+                backgroundColor={THEME.GREEN_COLOR}
+                color={THEME.WHITE_COLOR}
+                onPress={() => navigation.navigate("LoginScreen")}
+              >
+                Активна до 01.01.2022
+              </AppButton>
+            </View>
+            <View style={styles.buttonStyle}>
               <AppButton
                 backgroundColor={THEME.RED_COLOR}
                 color={THEME.WHITE_COLOR}
@@ -62,51 +58,52 @@ export const SubscriptionScreen = ({ navigation }) => {
               >
                 Отменить подписку
               </AppButton>
-          </View>
-          <AppTextBold style={styles.titleSettings}>Настройки</AppTextBold>
-          <AppTextBold style={styles.settingsDescr}>Изменить фото</AppTextBold>
-          <AppTextInput
-          style={styles.input}
-          value={{}}
-
-          placeholder={"URL изображения"}
-          />
-          <View style={styles.buttonStyle}>
+            </View>
+            <AppTextBold style={styles.titleSettings}>Настройки</AppTextBold>
+            <AppTextBold style={styles.settingsDescr}>
+              Изменить фото
+            </AppTextBold>
+            <AppTextInput
+              style={styles.input}
+              value={{}}
+              placeholder={"URL изображения"}
+            />
+            <View style={styles.buttonStyle}>
               <AppButton
                 backgroundColor={THEME.PURPLE_COLOR}
                 color={THEME.WHITE_COLOR}
-                // onPress={() => сonsole.log(ok)}
               >
                 Cохранить
               </AppButton>
-          </View>
-        </ScrollView>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
       </View>
-      <BottomNavbar/>
+      <View style={styles.footer}>
+        <BottomNavbar />
+      </View>
     </ImageBackground>
   );
-}
+};
 
 const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
-  background: {
-    width: "100%",
-    height: "100%",
-  },
   container: {
+    // flex: 1,
     width: "100%",
+    height: height,
     paddingTop: height / 10,
-    justifyContent: 'center',
-    alignItems:'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   scrollContainer: {
     maxWidth: width,
-    height: height*1.1,
+    height: height * 1.1,
     alignItems: "center",
     paddingHorizontal: width * 0.07,
   },
-  navLink: {  
+  navLink: {
     width: "35%",
     top: 60,
     left: 23,
@@ -123,7 +120,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginTop: height / 20,
-    marginBottom: height / 25
+    marginBottom: height / 25,
   },
   title: {
     textAlign: "center",
@@ -136,7 +133,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: THEME.GRAY_COLOR,
     maxWidth: "92%",
-    marginBottom: height/25
+    marginBottom: height / 25,
   },
   buttonStyle: {
     width: "100%",
@@ -146,16 +143,15 @@ const styles = StyleSheet.create({
     color: THEME.BLACK_COLOR,
     fontSize: 23,
     marginBottom: height / 25,
-    marginTop: height / 25
+    marginTop: height / 25,
   },
-  settingsDescr:{
+  settingsDescr: {
     marginRight: "60%",
     fontSize: 17,
-    marginBottom: height / 40
+    marginBottom: height / 40,
   },
   input: {
-    width: "95%"
-  }
-
-})
-    
+    width: "95%",
+  },
+  footer: {},
+});
