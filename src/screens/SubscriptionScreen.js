@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import {
   Dimensions,
   ImageBackground,
@@ -7,7 +7,6 @@ import {
   ScrollView,
   View,
   KeyboardAvoidingView,
-  SafeAreaView,
 } from "react-native";
 import { AppLink } from "../components/ui/AppLink";
 import { Entypo } from "@expo/vector-icons";
@@ -21,6 +20,17 @@ import { AppTextInput } from "../components/ui/AppTextInput";
 import { BottomNavbar } from "../components/BottomNavbar";
 
 export const SubscriptionScreen = ({ navigation }) => {
+  const [imageURL, setImageURL] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  const changeImage = (url) => {
+    setInputValue(url);
+  };
+
+  let uri = inputValue
+    ? inputValue
+    : "https://media.istockphoto.com/photos/portrait-of-handsome-latino-african-man-picture-id1007763808?k=20&m=1007763808&s=612x612&w=0&h=q4qlV-99EK1VHePL1-Xon4gpdpK7kz3631XK4Hgr1ls=";
+
   return (
     <ImageBackground source={require("../image/bg-white.png")}>
       <AppLink
@@ -34,8 +44,17 @@ export const SubscriptionScreen = ({ navigation }) => {
         <KeyboardAvoidingView behavior="padding">
           <ScrollView contentContainerStyle={styles.scrollContainer}>
             <Image
-              source={require("../image/user-pic.png")}
-              style={styles.avatar}
+              source={{ uri: uri }}
+              style={
+                (styles.avatar,
+                {
+                  width: 100,
+                  height: 100,
+                  borderRadius: 50,
+                  marginTop: height / 20,
+                  marginBottom: height / 25,
+                })
+              }
             />
             <AppTextBold style={styles.title}>Моя подписка</AppTextBold>
             <AppTextRegular style={styles.text}>
@@ -67,11 +86,13 @@ export const SubscriptionScreen = ({ navigation }) => {
               style={styles.input}
               value={{}}
               placeholder={"URL изображения"}
+              onChangeText={(text) => setImageURL(text)}
             />
             <View style={styles.buttonStyle}>
               <AppButton
                 backgroundColor={THEME.PURPLE_COLOR}
                 color={THEME.WHITE_COLOR}
+                onPress={() => changeImage(imageURL)}
               >
                 Cохранить
               </AppButton>
@@ -90,7 +111,6 @@ const { width, height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     width: "100%",
     height: height,
     paddingTop: height / 10,
@@ -153,5 +173,4 @@ const styles = StyleSheet.create({
   input: {
     width: "95%",
   },
-  footer: {},
 });

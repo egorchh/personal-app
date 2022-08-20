@@ -2,12 +2,13 @@ import React from "react";
 import { TextInput, StyleSheet, Dimensions } from "react-native";
 import { THEME } from "../../theme";
 
-export const AppTextInput = ({ style, placeholder, value }) => {
+export const AppTextInput = ({ style, placeholder, value, onChangeText }) => {
   return (
     <TextInput
       placeholder={placeholder}
       style={{ ...style, ...styles.input }}
       value={value}
+      onChangeText={onChangeText}
     />
   );
 };
