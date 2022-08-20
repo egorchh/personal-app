@@ -1,23 +1,37 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 
-import { ScrollView, StyleSheet, Dimensions } from "react-native";
+import { FlatList, StyleSheet, Dimensions } from "react-native";
 
 import { ContentCard } from "./ContentCard";
 
 export const ContentList = ({ data }) => {
-  const cards = [
-    data.map((item) => {
-      return <ContentCard title={item.title} date={item.date} key={item.id} />;
-    }),
-  ];
+  const [isLoading, setIsLoading] = useState(false);
+  const [cards, setCards] = useState([]);
+
+  const renderItem = ({ item }) => (
+    <ContentCard title={item.title} date={item.date} key={item.id} />
+  );
+
+  useEffect(() => {
+    getPosts();
+  }, [data]);
+
+  const getPosts = () => {
+    setIsLoading(true);
+    // Пока локальная база данных
+    setCards(data);
+    setIsLoading(false);
+  };
 
   return (
-    <ScrollView
+    <FlatList
       contentContainerStyle={styles.scrollContainer}
-      contentInset={{ bottom: 100 }}
-    >
-      {cards}
-    </ScrollView>
+      data={cards}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      onRefresh={getPosts}
+      refreshing={isLoading}
+    />
   );
 };
 

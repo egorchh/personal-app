@@ -5,7 +5,7 @@ import { THEME } from "../theme";
 import { AppTextBold } from "./ui/AppTextBold";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
-export const ContentCard = ({ navigation, title, date }) => {
+export const ContentCard = ({ title, date }) => {
   return (
     <View style={styles.contentContainer}>
       <Image
@@ -20,7 +20,7 @@ export const ContentCard = ({ navigation, title, date }) => {
   );
 };
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   preview: {
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   contentContainer: {
-    width: "100%",
+    width: width / 1.15,
     height: 200,
     marginBottom: 30,
   },

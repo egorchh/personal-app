@@ -74,7 +74,7 @@ const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
   scrollContainer: {
     maxWidth: width * 0.85,
-    height: 750,
+    height: height,
     alignItems: "flex-start",
     justifyContent: "space-between",
   },
