@@ -1,4 +1,4 @@
-import React, { useContext , useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 import {
   StyleSheet,
   ImageBackground,
@@ -16,9 +16,9 @@ import { BottomNavbar } from "../components/BottomNavbar";
 import { ContentList } from "../components/СontentList";
 import { DataContext } from "../context/data/DataContext";
 
-export const ContentScreen = ({ navigation,  }) => {
+export const ContentScreen = ({ navigation }) => {
   const data = useContext(DataContext);
-  
+
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "100%",
-    paddingTop: height / 10,
+    paddingTop: height / 8,
   },
   navLink: {
     width: "35%",
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: THEME.BLACK_COLOR,
     fontSize: 25,
-    marginBottom: height / 20,
+    marginBottom: height / 10,
   },
   search: {
     position: "absolute",

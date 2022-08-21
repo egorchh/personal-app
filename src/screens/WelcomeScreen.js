@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AvatarContext } from "../context/avatars/AvatarsContext";
+import React from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -15,8 +14,6 @@ import { AppTextBold } from "../components/ui/AppTextBold";
 import { THEME } from "../theme";
 
 export const WelcomeScreen = ({ navigation }) => {
-  const { uri } = useContext(AvatarContext);
-
   return (
     <ImageBackground
       source={require("../image/welcome-bg.png")}
@@ -26,8 +23,8 @@ export const WelcomeScreen = ({ navigation }) => {
         <View style={styles.userInfo}>
           <Image
             resizeMode="cover"
-            source={{ uri: uri }}
-            style={{ ...styles.avatar, width: 112, height: 112 }}
+            source={require("../image/user-pic.png")}
+            style={{ ...styles.avatar, width: 80, height: 80 }}
           />
           <AppTextBold style={styles.titleText}>
             Добро пожаловать в закрытый клуб Харчевникова
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
     maxWidth: "92%",
   },
   avatar: {
-    borderRadius: 56,
+    borderRadius: 40,
     marginBottom: Dimensions.get("screen").height / 16,
   },
   buttonContainer: {

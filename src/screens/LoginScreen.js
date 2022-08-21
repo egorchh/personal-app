@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AvatarContext } from "../context/avatars/AvatarsContext";
+import React from "react";
 import {
   StyleSheet,
   View,
@@ -18,8 +17,6 @@ import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
 
 export const LoginScreen = ({ navigation }) => {
-  const { uri } = useContext(AvatarContext);
-
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -33,7 +30,10 @@ export const LoginScreen = ({ navigation }) => {
         <AppTextSemiBold style={styles.navText}>На главную</AppTextSemiBold>
       </AppLink>
       <ScrollView contentContainerStyle={styles.container}>
-        <Image source={{ uri: uri }} style={styles.avatar} />
+        <Image
+          source={require("../image/user-pic.png")}
+          style={styles.avatar}
+        />
         <AppTextBold style={styles.title}>Войти</AppTextBold>
         <AppTextSemiBold style={styles.description}>
           Используя ник в telegram и пароль

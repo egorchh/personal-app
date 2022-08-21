@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "100%",
-    paddingTop: height / 10,
+    paddingTop: height / 8,
   },
   scrollContainer: {
     maxWidth: "100%",

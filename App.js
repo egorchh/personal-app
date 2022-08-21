@@ -15,11 +15,35 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [font, setFont] = useState(false);
   const [data, setData] = useState([
-    { id: 1, title: "Чем я пользуюсь вместо VPN", date: "30 июня 2022" },
-    { id: 2, title: "Тестовое название видео", date: "22 июня 2021" },
-    { id: 3, title: "Как выучить React Native за час", date: "12 июля 2022" },
-    { id: 4, title: "Выучить JavaScript", date: "11 августа 2020" },
-    { id: 5, title: "Выучить TypeScript за 3 минуты", date: "11 августа 2020" },
+    {
+      id: 1,
+      title: "Чем я пользуюсь вместо VPN. NotAFake!",
+      date: "30 июня 2022",
+      nameplate: "Новое",
+    },
+    {
+      id: 2,
+      title: "Тестовое название видео",
+      date: "22 июня 2021",
+      nameplate: "Эксклюзив",
+    },
+    {
+      id: 3,
+      title: "Как выучить React Native за час",
+      date: "12 июля 2022",
+    },
+    {
+      id: 4,
+      title: "Выучить JavaScript",
+      date: "11 августа 2020",
+      nameplate: "Эксклюзив",
+    },
+    {
+      id: 5,
+      title: "Выучить TypeScript за 3 минуты",
+      date: "11 августа 2020",
+      nameplate: "Новое",
+    },
   ]);
 
   // Работа с аватарками =======================================

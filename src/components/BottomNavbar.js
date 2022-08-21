@@ -1,13 +1,8 @@
 import React, { useContext } from "react";
 import { AvatarContext } from "../context/avatars/AvatarsContext";
 
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  Pressable
-} from "react-native";
+import { View, StyleSheet, Image, Dimensions, Pressable } from "react-native";
+
 import { THEME } from "../theme";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
@@ -20,10 +15,16 @@ export const BottomNavbar = ({}) => {
 
   return (
     <View style={styles.container}>
-      <Pressable 
-      hitSlop={{top:height*0.02, bottom:height*0.02, left: 0, right: 0}}
-      style = {styles.button}
-      onPress={() => navigation.navigate("ContentScreen") }>
+      <Pressable
+        hitSlop={{
+          top: height * 0.02,
+          bottom: height * 0.02,
+          left: 0,
+          right: 0,
+        }}
+        style={styles.button}
+        onPress={() => navigation.navigate("ContentScreen")}
+      >
         <View style={styles.wrapper}>
           <Image
             style={styles.icon}
@@ -32,9 +33,15 @@ export const BottomNavbar = ({}) => {
           <AppTextSemiBold style={styles.text}>Контент</AppTextSemiBold>
         </View>
       </Pressable>
-      <Pressable 
-      hitSlop={{top:height*0.02, bottom:height*0.02, left: 0, right: 0}}
-      style = {styles.button}>
+      <Pressable
+        hitSlop={{
+          top: height * 0.02,
+          bottom: height * 0.02,
+          left: 0,
+          right: 0,
+        }}
+        style={styles.button}
+      >
         <View style={styles.wrapper}>
           <Image
             style={styles.icon}
@@ -43,9 +50,16 @@ export const BottomNavbar = ({}) => {
           <AppTextSemiBold style={styles.text}>Закладки</AppTextSemiBold>
         </View>
       </Pressable>
-      <Pressable 
-      hitSlop={{top:height*0.02, bottom:height*0.02, left: 0, right: 0}}
-      style = {styles.button}>
+      <Pressable
+        onPress={() => navigation.navigate("NotificationsScreen")}
+        hitSlop={{
+          top: height * 0.02,
+          bottom: height * 0.02,
+          left: 0,
+          right: 0,
+        }}
+        style={styles.button}
+      >
         <View style={styles.wrapper}>
           <Image
             style={styles.icon}
@@ -54,10 +68,16 @@ export const BottomNavbar = ({}) => {
           <AppTextSemiBold style={styles.text}>Уведомления</AppTextSemiBold>
         </View>
       </Pressable>
-      <Pressable 
-      hitSlop={{top:height*0.02, bottom:height*0.02, left: 0, right: width*0.125}}
-      style = {styles.button}
-      onPress={() => navigation.navigate("SubscriptionScreen")}>
+      <Pressable
+        hitSlop={{
+          top: height * 0.02,
+          bottom: height * 0.02,
+          left: 0,
+          right: width * 0.125,
+        }}
+        style={styles.button}
+        onPress={() => navigation.navigate("SubscriptionScreen")}
+      >
         <View style={styles.wrapper}>
           <Image
             style={{ width: 32, height: 32, borderRadius: 16 }}
@@ -77,7 +97,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // paddingHorizontal: width * 0.07,
     paddingVertical: 20,
     backgroundColor: THEME.WHITE_COLOR,
     position: "absolute",
@@ -99,7 +118,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
-  button:{
-    width: width*0.225
-  }
+  button: {
+    width: width * 0.225,
+  },
 });

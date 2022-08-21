@@ -4,14 +4,21 @@ import { View, StyleSheet, Image, Dimensions } from "react-native";
 import { THEME } from "../theme";
 import { AppTextBold } from "./ui/AppTextBold";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
+import { AppNameplate } from "./ui/AppNameplate";
 
-export const ContentCard = ({ title, date }) => {
+export const ContentCard = ({ title, date, nameplatePropsObj }) => {
   return (
     <View style={styles.contentContainer}>
       <Image
         style={styles.preview}
         source={require("../image/welcome-bg.png")}
       />
+      <AppNameplate
+        color={THEME.WHITE_COLOR}
+        backgroundColor={nameplatePropsObj.backgroundColor}
+      >
+        {nameplatePropsObj.title}
+      </AppNameplate>
       <View style={styles.desctiptionContainer}>
         <AppTextBold style={styles.descriptionTitle}>{title}</AppTextBold>
         <AppTextSemiBold style={styles.descriptionText}>{date}</AppTextSemiBold>

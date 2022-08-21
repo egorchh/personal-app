@@ -25,23 +25,6 @@ import { AVATARS } from "../avatars";
 export const SubscriptionScreen = ({ navigation }) => {
   const { changeImage, inputUrlHandler, uri, imageURL } =
     useContext(AvatarContext);
-  // const [imageURL, setImageURL] = useState("");
-  // const [resImage, setResImage] = useState("");
-
-  // const changeImage = (uri) => {
-  //   setResImage(uri);
-  // };
-
-  // const avatarsArray = AVATARS.map(
-  //   (item) => Image.resolveAssetSource(item).uri
-  // );
-
-  // function arrayRandElement(arr) {
-  //   const rand = Math.floor(Math.random() * arr.length);
-  //   return arr[rand];
-  // }
-
-  // let uri = resImage ? resImage : arrayRandElement(avatarsArray);
 
   return (
     <ImageBackground source={require("../image/bg-white.png")}>
