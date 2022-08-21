@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useEffect} from "react";
 import {
   StyleSheet,
   ImageBackground,
@@ -16,8 +16,9 @@ import { BottomNavbar } from "../components/BottomNavbar";
 import { ContentList } from "../components/СontentList";
 import { DataContext } from "../context/data/DataContext";
 
-export const ContentScreen = ({ navigation }) => {
+export const ContentScreen = ({ navigation,  }) => {
   const data = useContext(DataContext);
+  
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
