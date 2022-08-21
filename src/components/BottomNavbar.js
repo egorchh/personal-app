@@ -1,4 +1,6 @@
-import { React } from "react";
+import React, { useContext } from "react";
+import { AvatarContext } from "../context/avatars/AvatarsContext";
+
 import {
   View,
   StyleSheet,
@@ -12,11 +14,13 @@ import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 
 import { useNavigation } from "@react-navigation/native";
 
-export const BottomNavbar = ({ avatarUri }) => {
+export const BottomNavbar = () => {
   const Wrapper =
     Platform.OS === "android" ? TouchableNativeFeedback : TouchableOpacity;
 
   const navigation = useNavigation();
+
+  const { uri } = useContext(AvatarContext);
 
   return (
     <View style={styles.container}>
@@ -51,7 +55,7 @@ export const BottomNavbar = ({ avatarUri }) => {
         <View style={styles.wrapper}>
           <Image
             style={{ width: 32, height: 32, borderRadius: 16 }}
-            source={{ uri: avatarUri }}
+            source={{ uri: uri }}
           />
           <AppTextSemiBold style={styles.text}>Подписка</AppTextSemiBold>
         </View>

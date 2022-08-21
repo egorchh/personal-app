@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AvatarContext } from "../context/avatars/AvatarsContext";
 import {
   ImageBackground,
   StyleSheet,
@@ -14,6 +15,8 @@ import { AppTextBold } from "../components/ui/AppTextBold";
 import { THEME } from "../theme";
 
 export const WelcomeScreen = ({ navigation }) => {
+  const { uri } = useContext(AvatarContext);
+
   return (
     <ImageBackground
       source={require("../image/welcome-bg.png")}
@@ -23,8 +26,8 @@ export const WelcomeScreen = ({ navigation }) => {
         <View style={styles.userInfo}>
           <Image
             resizeMode="cover"
-            source={require("../image/user-pic.png")}
-            style={{ ...styles.avatar, width: 54, height: 54 }}
+            source={{ uri: uri }}
+            style={{ ...styles.avatar, width: 112, height: 112 }}
           />
           <AppTextBold style={styles.titleText}>
             Добро пожаловать в закрытый клуб Харчевникова
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   userInfo: {
-    marginTop: "35%",
+    marginTop: "25%",
   },
   titleText: {
     color: THEME.WHITE_COLOR,
@@ -102,11 +105,8 @@ const styles = StyleSheet.create({
     maxWidth: "92%",
   },
   avatar: {
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    marginBottom: Dimensions.get("screen").height / 8,
+    borderRadius: 56,
+    marginBottom: Dimensions.get("screen").height / 16,
   },
   buttonContainer: {
     justifyContent: "center",

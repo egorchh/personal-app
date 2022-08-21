@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useContext } from "react";
+import { AvatarContext } from "../context/avatars/AvatarsContext";
 import {
   Dimensions,
   ImageBackground,
@@ -22,23 +23,25 @@ import { BottomNavbar } from "../components/BottomNavbar";
 import { AVATARS } from "../avatars";
 
 export const SubscriptionScreen = ({ navigation }) => {
-  const [imageURL, setImageURL] = useState("");
-  const [resImage, setResImage] = useState("");
+  const { changeImage, inputUrlHandler, uri, imageURL } =
+    useContext(AvatarContext);
+  // const [imageURL, setImageURL] = useState("");
+  // const [resImage, setResImage] = useState("");
 
-  const changeImage = (uri) => {
-    setResImage(uri);
-  };
+  // const changeImage = (uri) => {
+  //   setResImage(uri);
+  // };
 
-  const avatarsArray = AVATARS.map(
-    (item) => Image.resolveAssetSource(item).uri
-  );
+  // const avatarsArray = AVATARS.map(
+  //   (item) => Image.resolveAssetSource(item).uri
+  // );
 
-  function arrayRandElement(arr) {
-    const rand = Math.floor(Math.random() * arr.length);
-    return arr[rand];
-  }
+  // function arrayRandElement(arr) {
+  //   const rand = Math.floor(Math.random() * arr.length);
+  //   return arr[rand];
+  // }
 
-  let uri = resImage ? resImage : arrayRandElement(avatarsArray);
+  // let uri = resImage ? resImage : arrayRandElement(avatarsArray);
 
   return (
     <ImageBackground source={require("../image/bg-white.png")}>
@@ -53,7 +56,7 @@ export const SubscriptionScreen = ({ navigation }) => {
         <KeyboardAvoidingView behavior="padding">
           <ScrollView contentContainerStyle={styles.scrollContainer}>
             <Image
-              source={{ uri: uri }}
+              source={{ uri: uri }} // тык
               style={{
                 width: 100,
                 height: 100,
@@ -92,13 +95,13 @@ export const SubscriptionScreen = ({ navigation }) => {
               style={styles.input}
               value={{}}
               placeholder={"URL изображения"}
-              onChangeText={(text) => setImageURL(text)}
+              onChangeText={(text) => inputUrlHandler(text)} // тык
             />
             <View style={styles.buttonStyle}>
               <AppButton
                 backgroundColor={THEME.PURPLE_COLOR}
                 color={THEME.WHITE_COLOR}
-                onPress={() => changeImage(imageURL)}
+                onPress={() => changeImage(imageURL)} // тык
               >
                 Cохранить
               </AppButton>

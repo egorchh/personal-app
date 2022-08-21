@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import { DataContext } from "./src/context/data/DataContext";
 
 import Navigation from "./src/navigation";
 
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { AvatarContext } from "./src/context/avatars/AvatarsContext";
+import { AVATARS } from "./src/avatars";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -20,7 +22,31 @@ export default function App() {
     { id: 5, title: "Выучить TypeScript за 3 минуты", date: "11 августа 2020" },
   ]);
 
-  // const [resImage, setResImage] = useState("");
+  // Работа с аватарками =======================================
+
+  const [imageURL, setImageURL] = useState("");
+  const [resImage, setResImage] = useState("");
+
+  const changeImage = (uri) => {
+    setResImage(uri);
+  };
+
+  const inputUrlHandler = (text) => {
+    setImageURL(text);
+  };
+
+  const avatarsArray = AVATARS.map(
+    (item) => Image.resolveAssetSource(item).uri
+  );
+
+  function arrayRandElement(arr) {
+    const rand = Math.floor(Math.random() * arr.length);
+    return arr[rand];
+  }
+
+  let uri = resImage ? resImage : arrayRandElement(avatarsArray);
+
+  //=============================================================
 
   useEffect(() => {
     async function prepare() {
@@ -54,7 +80,16 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style="auto" />
       <DataContext.Provider value={data}>
-        <Navigation />
+        <AvatarContext.Provider
+          value={{
+            changeImage,
+            uri,
+            inputUrlHandler,
+            imageURL,
+          }}
+        >
+          <Navigation />
+        </AvatarContext.Provider>
       </DataContext.Provider>
     </View>
   );
