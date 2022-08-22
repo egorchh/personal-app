@@ -54,6 +54,7 @@ export default function Navigation() {
           component={UserNotFoundScreen}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="SearchScreen"
           component={SearchScreen}

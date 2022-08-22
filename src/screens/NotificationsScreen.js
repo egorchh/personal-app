@@ -12,7 +12,7 @@ import { Entypo } from "@expo/vector-icons";
 import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
-import { BottomNavbar } from "../components/BottomNavbar";
+// import { BottomNavbar } from "../components/BottomNavbar";
 import { ContentListNameplates } from "../components/ContentListNameplates";
 import { DataContext } from "../context/data/DataContext";
 
@@ -140,7 +140,7 @@ export const NotificationsScreen = ({ navigation }) => {
         </View>
         <ContentListNameplates data={filterData} />
       </View>
-      <BottomNavbar />
+      {/* <BottomNavbar /> */}
     </ImageBackground>
   );
 };
