@@ -9,14 +9,17 @@ import {
   Dimensions,
   Pressable,
 } from "react-native";
-import { THEME } from "./theme";
-import { AppTextSemiBold } from "./components/ui/AppTextSemiBold";
 
 import { useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { THEME } from "./theme";
+import { AppTextSemiBold } from "./components/ui/AppTextSemiBold";
+
 import { ContentScreen } from "./screens/ContentScreen";
 import { SubscriptionScreen } from "./screens/SubscriptionScreen";
 import { NotificationsScreen } from "./screens/NotificationsScreen";
+import { FavoriteScreen } from "./screens/FavoriteScreen";
 
 export const TabNavigation = ({}) => {
   const { uri } = useContext(AvatarContext);
@@ -42,10 +45,12 @@ export const TabNavigation = ({}) => {
               : require("../src/image/icon-star.png");
             iconStyle = styles.icon;
             textStyle = focused ? styles.textActive : styles.text;
-            // } else if (route.name === 'Закладки') {
-            //   iconName = focused ? require('../src/image/icon-save-active.png') : require('../src/image/icon-save.png');
-            //   iconStyle = styles.icon;
-            //   textStyle = focused ? styles.textActive : styles.text
+          } else if (route.name === "Закладки") {
+            iconName = focused
+              ? require("../src/image/icon-save-active.png")
+              : require("../src/image/icon-save.png");
+            iconStyle = styles.icon;
+            textStyle = focused ? styles.textActive : styles.text;
           } else if (route.name === "Уведомления") {
             iconName = focused
               ? require("../src/image/icon-bell-active.png")
@@ -75,6 +80,11 @@ export const TabNavigation = ({}) => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
+        name="Закладки"
+        component={FavoriteScreen}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
         name="Уведомления"
         component={NotificationsScreen}
         options={{ headerShown: false }}
@@ -84,11 +94,6 @@ export const TabNavigation = ({}) => {
         component={SubscriptionScreen}
         options={{ headerShown: false }}
       />
-      {/* <Tab.Screen
-          name="Закладки"
-          component={}
-          options={{ headerShown: false }}
-        /> */}
     </Tab.Navigator>
   );
 };
