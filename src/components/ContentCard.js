@@ -6,7 +6,12 @@ import { AppTextBold } from "./ui/AppTextBold";
 import { AppTextSemiBold } from "./ui/AppTextSemiBold";
 import { AppNameplate } from "./ui/AppNameplate";
 
-export const ContentCard = ({ title, date, nameplatePropsObj }) => {
+export const ContentCard = ({
+  title,
+  date,
+  firstNameplate,
+  secondNameplate,
+}) => {
   return (
     <View style={styles.contentContainer}>
       <Image
@@ -14,10 +19,18 @@ export const ContentCard = ({ title, date, nameplatePropsObj }) => {
         source={require("../image/welcome-bg.png")}
       />
       <AppNameplate
+        style={{ top: 10, left: 10 }}
         color={THEME.WHITE_COLOR}
-        backgroundColor={nameplatePropsObj.backgroundColor}
+        backgroundColor={firstNameplate?.backgroundColor}
       >
-        {nameplatePropsObj.title}
+        {firstNameplate?.title}
+      </AppNameplate>
+      <AppNameplate
+        style={{ top: 10, left: 90 }}
+        color={THEME.WHITE_COLOR}
+        backgroundColor={secondNameplate?.backgroundColor}
+      >
+        {secondNameplate?.title}
       </AppNameplate>
       <View style={styles.desctiptionContainer}>
         <AppTextBold style={styles.descriptionTitle}>{title}</AppTextBold>

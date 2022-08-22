@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   ImageBackground,
@@ -13,13 +13,15 @@ import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
 import { BottomNavbar } from "../components/BottomNavbar";
-import { ContentList } from "../components/СontentList";
+import { ContentListNameplates } from "../components/ContentListNameplates";
 import { DataContext } from "../context/data/DataContext";
 
 export const NotificationsScreen = ({ navigation }) => {
   const data = useContext(DataContext);
 
-  // Подчеркивание выбранного элемента, уерен что говно реализация
+  const [filterData, setFilterData] = useState(data);
+
+  // Подчеркивание выбранного элемента, уверен что говно реализация + Фильтрация по тегам
   const [all, setAll] = useState(
     <>
       <View
@@ -52,6 +54,8 @@ export const NotificationsScreen = ({ navigation }) => {
     );
     setRec(null);
     setExcl(null);
+
+    setFilterData(data);
   };
 
   const onFilterExcl = () => {
@@ -70,6 +74,8 @@ export const NotificationsScreen = ({ navigation }) => {
     );
     setAll(null);
     setRec(null);
+
+    setFilterData(data.filter((item) => item.nameplate.includes("Эксклюзив")));
   };
 
   const onFilterRec = () => {
@@ -88,6 +94,8 @@ export const NotificationsScreen = ({ navigation }) => {
     );
     setAll(null);
     setExcl(null);
+
+    setFilterData(data.filter((item) => item.nameplate.includes("Советую")));
   };
 
   return (
@@ -130,7 +138,7 @@ export const NotificationsScreen = ({ navigation }) => {
             {rec}
           </AppLink>
         </View>
-        <ContentList data={data} />
+        <ContentListNameplates data={filterData} />
       </View>
       <BottomNavbar />
     </ImageBackground>

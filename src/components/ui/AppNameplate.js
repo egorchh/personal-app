@@ -4,9 +4,9 @@ import { THEME } from "../../theme";
 
 import { AppTextSemiBold } from "./AppTextSemiBold";
 
-export const AppNameplate = ({ children, backgroundColor, color }) => {
+export const AppNameplate = ({ children, backgroundColor, color, style }) => {
   return (
-    <View style={{ ...styles.nameplate, backgroundColor }}>
+    <View style={{ ...style, ...styles.nameplate, backgroundColor }}>
       <AppTextSemiBold style={{ color, ...styles.nameplateText }}>
         {children}
       </AppTextSemiBold>
@@ -19,16 +19,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    top: 10,
-    left: 10,
     maxWidth: 100,
     borderRadius: 3,
     borderTopLeftRadius: 6,
     paddingHorizontal: 20,
-    paddingVertical: 4,
+    paddingVertical: 3,
     backgroundColor: THEME.PURPLE_COLOR,
   },
   nameplateText: {
-    fontSize: 11,
+    fontSize: 9,
   },
 });

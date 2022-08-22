@@ -4,28 +4,11 @@ import { FlatList, StyleSheet, Dimensions } from "react-native";
 
 import { ContentCard } from "./ContentCard";
 
-import { THEME } from "../theme";
-
 export const ContentList = ({ data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
 
-  const createNameplate = (item) => {
-    switch (item.nameplate) {
-      case "Новое":
-        return {
-          backgroundColor: THEME.PURPLE_COLOR,
-          title: "Новое",
-        };
-      case "Эксклюзив":
-        return {
-          backgroundColor: THEME.YELLOW_COLOR,
-          title: "Эксклюзив",
-        };
-      default:
-        return {};
-    }
-  };
+  //Валидация длины названия видео  ==========================================================
 
   const validateTitle = (title) => {
     return title.length <= 26 ? title : title.slice(0, 26) + "...";
@@ -36,7 +19,6 @@ export const ContentList = ({ data }) => {
       title={validateTitle(item.title)}
       date={item.date}
       key={item.id}
-      nameplatePropsObj={createNameplate(item)}
     />
   );
 
@@ -46,7 +28,6 @@ export const ContentList = ({ data }) => {
 
   const getPosts = () => {
     setIsLoading(true);
-    // Пока локальная база данных
     setCards(data);
     setIsLoading(false);
   };

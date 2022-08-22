@@ -19,6 +19,20 @@ import { DataContext } from "../context/data/DataContext";
 export const ContentScreen = ({ navigation }) => {
   const data = useContext(DataContext);
 
+  // Валидация базы данных. Имутабельное удаление ключа nameplate с его свойством
+
+  const deleteNameplates = (data) => {
+    return data.map((item) =>
+      Object.keys(item).reduce((acc, key) => {
+        if (key !== "nameplate") {
+          acc[key] = item[key];
+        }
+
+        return acc;
+      }, {})
+    );
+  };
+
   return (
     <ImageBackground
       source={require("../image/bg-white.png")}
@@ -42,7 +56,7 @@ export const ContentScreen = ({ navigation }) => {
       </AppLink>
       <View style={styles.container}>
         <AppTextBold style={styles.title}>Эксклюзивный контент</AppTextBold>
-        <ContentList data={data} />
+        <ContentList data={deleteNameplates(data)} />
       </View>
       <BottomNavbar />
     </ImageBackground>
