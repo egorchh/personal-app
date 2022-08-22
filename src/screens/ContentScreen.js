@@ -12,7 +12,7 @@ import { Entypo } from "@expo/vector-icons";
 import { THEME } from "../theme";
 import { AppTextSemiBold } from "../components/ui/AppTextSemiBold";
 import { AppTextBold } from "../components/ui/AppTextBold";
-import { BottomNavbar } from "../components/BottomNavbar";
+// import { BottomNavbar } from "../components/BottomNavbar";
 import { ContentList } from "../components/СontentList";
 import { DataContext } from "../context/data/DataContext";
 
@@ -58,7 +58,7 @@ export const ContentScreen = ({ navigation }) => {
         <AppTextBold style={styles.title}>Эксклюзивный контент</AppTextBold>
         <ContentList data={deleteNameplates(data)} />
       </View>
-      <BottomNavbar />
+      {/* <BottomNavbar /> */}
     </ImageBackground>
   );
 };

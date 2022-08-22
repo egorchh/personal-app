@@ -33,7 +33,7 @@ export const SearchScreen = ({ navigation }) => {
     >
       <AppLink
         style={styles.navLink}
-        onPress={() => navigation.navigate("ContentScreen")}
+        onPress={() => navigation.goBack()}
       >
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>Назад</AppTextSemiBold>

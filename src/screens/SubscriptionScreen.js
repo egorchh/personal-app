@@ -18,7 +18,7 @@ import { AppTextBold } from "../components/ui/AppTextBold";
 import { AppTextRegular } from "../components/ui/AppTextRegular";
 import { AppButton } from "../components/ui/AppButton";
 import { AppTextInput } from "../components/ui/AppTextInput";
-import { BottomNavbar } from "../components/BottomNavbar";
+// import { BottomNavbar } from "../components/BottomNavbar";
 
 import { AVATARS } from "../avatars";
 
@@ -30,7 +30,7 @@ export const SubscriptionScreen = ({ navigation }) => {
     <ImageBackground source={require("../image/bg-white.png")}>
       <AppLink
         style={styles.navLink}
-        onPress={() => navigation.navigate("ContentScreen")}
+        onPress={() => navigation.goBack()}
       >
         <Entypo name="chevron-thin-left" size={18} color={THEME.GRAY_COLOR} />
         <AppTextSemiBold style={styles.navText}>Назад</AppTextSemiBold>
@@ -41,11 +41,11 @@ export const SubscriptionScreen = ({ navigation }) => {
             <Image
               source={{ uri: uri }} // тык
               style={{
-                width: 100,
-                height: 100,
-                borderRadius: 50,
-                marginTop: height / 20,
-                marginBottom: height / 25,
+                  width: 100,
+                  height: 100,
+                  borderRadius: 50,
+                  marginTop: height / 20,
+                  marginBottom: height / 25,
               }}
             />
             <AppTextBold style={styles.title}>Моя подписка</AppTextBold>
@@ -92,9 +92,9 @@ export const SubscriptionScreen = ({ navigation }) => {
           </ScrollView>
         </KeyboardAvoidingView>
       </View>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <BottomNavbar avatarUri={uri} />
-      </View>
+      </View> */}
     </ImageBackground>
   );
 };
@@ -159,3 +159,4 @@ const styles = StyleSheet.create({
     width: "95%",
   },
 });
+ 
