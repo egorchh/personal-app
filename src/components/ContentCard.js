@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import { View, StyleSheet, Image, Dimensions, Pressable } from "react-native";
 
 import { THEME } from "../theme";
 import { AppTextBold } from "./ui/AppTextBold";

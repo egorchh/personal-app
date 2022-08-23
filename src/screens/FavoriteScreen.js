@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   ImageBackground,
@@ -15,8 +15,12 @@ import { AppTextBold } from "../components/ui/AppTextBold";
 import { ContentList } from "../components/СontentList";
 import { DataContext } from "../context/data/DataContext";
 
-export const FavoriteScreen = ({ navigation }) => {
-  const data = useContext(DataContext);
+export const FavoriteScreen = ({ navigation, data }) => {
+  const [savedData, setSavedData] = useState([]);
+
+  const addDataItem = (data) => {
+    setSavedData();
+  };
 
   // Валидация базы данных. Имутабельное удаление ключа nameplate с его свойством
 
@@ -55,7 +59,7 @@ export const FavoriteScreen = ({ navigation }) => {
       </AppLink>
       <View style={styles.container}>
         <AppTextBold style={styles.title}>Мои закладки</AppTextBold>
-        <ContentList data={deleteNameplates(data)} />
+        <ContentList data={deleteNameplates(savedData)} />
       </View>
     </ImageBackground>
   );

@@ -10,6 +10,8 @@ import { UserNotFoundScreen } from "./screens/UserNotFoundScreen";
 import { SearchScreen } from "./screens/SearchScreen";
 import { TabNavigation } from "./TabNavigation";
 
+import { ContentItemScreen } from "./screens/ContentItemScreen";
+
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
@@ -54,15 +56,21 @@ export default function Navigation() {
           component={UserNotFoundScreen}
           options={{ headerShown: false }}
         />
-
         <Stack.Screen
           name="SearchScreen"
           component={SearchScreen}
           options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="TabNavigation"
           component={TabNavigation}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="ContentItemScreen"
+          component={ContentItemScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-import { FlatList, StyleSheet, Dimensions } from "react-native";
+import { FlatList, StyleSheet, Dimensions, Pressable } from "react-native";
 
 import { ContentCard } from "./ContentCard";
+
+import { useNavigation } from "@react-navigation/native";
 
 export const ContentList = ({ data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
 
+  const navigation = useNavigation();
   //Валидация длины названия видео  ==========================================================
 
   const validateTitle = (title) => {
@@ -15,11 +18,17 @@ export const ContentList = ({ data }) => {
   };
 
   const renderItem = ({ item }) => (
-    <ContentCard
-      title={validateTitle(item.title)}
-      date={item.date}
-      key={item.id}
-    />
+    <Pressable
+      onPress={() => {
+        navigation.navigate("ContentItemScreen");
+      }}
+    >
+      <ContentCard
+        title={validateTitle(item.title)}
+        date={item.date}
+        key={item.id}
+      />
+    </Pressable>
   );
 
   useEffect(() => {

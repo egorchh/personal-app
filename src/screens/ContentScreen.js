@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: THEME.BLACK_COLOR,
     fontSize: 25,
-    marginBottom: height / 10,
+    marginBottom: height / 15,
   },
   search: {
     position: "absolute",
