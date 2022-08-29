@@ -18,36 +18,43 @@ export default function App() {
     {
       id: 1,
       title: "Чем я пользуюсь вместо VPN. NotAFake!",
+      description:
+        "Существует один сервис, которым я пользуюсь достаточно часто...",
       date: "30 июня 2022",
       nameplate: ["Новое", "Советую"],
     },
     {
       id: 2,
       title: "Как выучить JS + RN + Node.js",
+      description: "",
       date: "22 июня 2021",
       nameplate: ["Новое", "Эксклюзив"],
     },
     {
       id: 3,
       title: "Как найти первую работу в два года?",
+      description: "",
       date: "22 июня 2021",
       nameplate: ["Новое"],
     },
     {
       id: 4,
       title: "Купил 30 тонн чак-чака у Старого",
+      description: "",
       date: "22 июня 2021",
       nameplate: ["Новое", "Советую"],
     },
     {
       id: 5,
       title: "Боря смонтировал Видос!!!",
+      description: "",
       date: "22 июня 2021",
       nameplate: ["Новое", "Эксклюзив"],
     },
     {
       id: 6,
       title: "Самая крутая лодка в городе. Артем Десятков",
+      description: "",
       date: "22 июня 2021",
       nameplate: ["Новое", "Эксклюзив"],
     },

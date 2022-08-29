@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 import {
   StyleSheet,
@@ -16,16 +16,10 @@ import { THEME } from "../theme";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import { DataContext } from "../context/data/DataContext";
-
-export const ContentItemScreen = ({ navigation }) => {
+export const ContentItemScreen = ({ navigation, route }) => {
   const [favorite, setFavorite] = useState(false);
 
-  const data = useContext(DataContext);
-
-  // const chooseDataItem = (data, id) => {
-
-  // }
+  const { item } = route.params;
 
   const saveContentItem = () => {
     setFavorite(favorite ? false : true);
@@ -57,20 +51,12 @@ export const ContentItemScreen = ({ navigation }) => {
         </AppLink>
       </ImageBackground>
       <ScrollView style={styles.container}>
-        <AppTextBold style={styles.title}>
-          Где меня можно встретить в Москве? Рассказываю про места, где я часто
-          бываю.
-        </AppTextBold>
+        <AppTextBold style={styles.title}>{item.title}</AppTextBold>
         <AppTextSemiBold style={styles.date}>
-          27 июля 2022 в 17:02
+          {item.date} в 17:02
         </AppTextSemiBold>
         <AppTextSemiBold style={styles.text}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil labore
-          animi error vitae, a qui quidem delectus dolorem assumenda porro
-          molestiae dolores debitis eligendi aut consectetur autem quaerat
-          cupiditate sit atque harum temporibus officiis. Cum qui odio eveniet
-          deleniti. Similique reprehenderit beatae maiores placeat eum?
-          Provident ratione blanditiis quidem ad!
+          {item.description}
         </AppTextSemiBold>
       </ScrollView>
     </>

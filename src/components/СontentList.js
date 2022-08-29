@@ -20,7 +20,7 @@ export const ContentList = ({ data }) => {
   const renderItem = ({ item }) => (
     <Pressable
       onPress={() => {
-        navigation.navigate("ContentItemScreen");
+        navigation.navigate("ContentItemScreen", { item });
       }}
     >
       <ContentCard
